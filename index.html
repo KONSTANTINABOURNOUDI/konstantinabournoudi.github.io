@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F3EAF0" />
+  <meta name="color-scheme" content="light" />
+  <title>Konstantina Bournoudi</title>
+  <meta name="description" content="Konstantina Bournoudi, Business Administration student at the National and Kapodistrian University of Athens. LinkedIn, email, and contact card." />
+  <link rel="canonical" href="https://konstantinabournoudi.github.io/" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Konstantina Bournoudi" />
+  <meta property="og:description" content="Business Administration, NKUA. LinkedIn, email, and contact card in one place." />
+  <meta property="og:url" content="https://konstantinabournoudi.github.io/" />
+  <meta property="og:image" content="https://konstantinabournoudi.github.io/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="KB signature and the name Konstantina Bournoudi" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://konstantinabournoudi.github.io/assets/og.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@400;500&display=swap" />
+
+  <style>
+    :root {
+      --paper: #F3EAF0;
+      --ink: #1D191B;
+      --ink-soft: #5E5158;
+      --plum: #6E3550;
+      --rose: #C99AAE;
+      --lilac: #D9CBEA;
+      --line: rgba(29, 25, 27, 0.12);
+      --glass: rgba(255, 255, 255, 0.58);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+      --sans: "Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+      color-scheme: light;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { background: var(--paper); -webkit-text-size-adjust: 100%; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex; flex-direction: column; align-items: center;
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--plum); color: #ffffff; }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; color: inherit; background: none; border: 0; -webkit-tap-highlight-color: transparent; }
+    svg { display: block; flex-shrink: 0; }
+    :focus-visible { outline: 2px solid var(--plum); outline-offset: 4px; }
+
+    /* Soft paper backdrop: two drifting watercolour blooms and fine grain */
+    .wash { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+    .wash::before, .wash::after {
+      content: ""; position: absolute; border-radius: 50%; filter: blur(60px);
+    }
+    .wash::before {
+      width: 90vmax; height: 90vmax; left: -38vmax; top: -42vmax;
+      background: radial-gradient(circle, rgba(201, 154, 174, 0.55) 0%, rgba(201, 154, 174, 0) 65%);
+      animation: drift-a 26s ease-in-out infinite alternate;
+    }
+    .wash::after {
+      width: 80vmax; height: 80vmax; right: -34vmax; bottom: -36vmax;
+      background: radial-gradient(circle, rgba(217, 203, 234, 0.75) 0%, rgba(217, 203, 234, 0) 65%);
+      animation: drift-b 32s ease-in-out infinite alternate;
+    }
+    .wash__grain {
+      position: absolute; inset: 0; opacity: 0.32; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0 0.4 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    @keyframes drift-a { to { transform: translate(8vmax, 6vmax) scale(1.08); } }
+    @keyframes drift-b { to { transform: translate(-6vmax, -8vmax) scale(1.1); } }
+
+    /* Layout */
+    .card {
+      position: relative;
+      flex: 1 0 auto;
+      display: flex; flex-direction: column; align-items: center;
+      width: 100%; max-width: 460px;
+      padding:
+        calc(env(safe-area-inset-top, 0px) + 16px)
+        calc(env(safe-area-inset-right, 0px) + 22px)
+        calc(env(safe-area-inset-bottom, 0px) + 28px)
+        calc(env(safe-area-inset-left, 0px) + 22px);
+      text-align: center;
+    }
+
+    .share {
+      position: absolute; z-index: 2;
+      top: calc(env(safe-area-inset-top, 0px) + 14px);
+      right: calc(env(safe-area-inset-right, 0px) + 14px);
+      display: grid; place-items: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: background-color 0.35s var(--ease), color 0.35s var(--ease), scale 0.2s var(--ease);
+    }
+    .share svg { width: 18px; height: 18px; }
+    .share:active { scale: 0.92; }
+
+    /* Signature */
+    .sig-wrap {
+      width: min(300px, 76vw);
+      margin-top: clamp(44px, 7vh, 72px);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .sig { width: 100%; height: auto; overflow: visible; }
+    .pen { animation-name: draw; animation-fill-mode: forwards; animation-timing-function: cubic-bezier(0.45, 0.05, 0.35, 1); }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+
+    .name {
+      margin-top: 18px;
+      font-family: var(--serif);
+      font-size: clamp(42px, 12.5vw, 54px);
+      font-weight: 500; line-height: 0.98; letter-spacing: -0.01em;
+    }
+    .name span { display: block; }
+
+    .divider {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      margin: 22px auto 16px;
+      color: var(--rose);
+    }
+    .divider::before, .divider::after { content: ""; width: 44px; height: 1px; background: currentColor; }
+    .divider svg { width: 9px; height: 9px; }
+
+    .role {
+      font-family: var(--serif); font-style: italic;
+      font-size: 21px; font-weight: 500; line-height: 1.3;
+      color: var(--plum);
+    }
+    .school {
+      max-width: 28ch; margin: 6px auto 0;
+      text-wrap: balance;
+      font-size: 14px; line-height: 1.55; letter-spacing: 0.01em;
+      color: var(--ink-soft);
+    }
+
+    /* Links */
+    .links { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-top: 34px; list-style: none; text-align: left; }
+
+    .link {
+      display: grid; grid-template-columns: 46px minmax(0, 1fr) 20px; align-items: center; gap: 16px;
+      min-height: 68px; padding: 10px 22px 10px 10px;
+      border-radius: 999px;
+      background: var(--glass);
+      border: 1px solid var(--line);
+      box-shadow: 0 1px 2px rgba(110, 53, 80, 0.04), 0 8px 24px -12px rgba(110, 53, 80, 0.18);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      transition:
+        translate 0.45s var(--ease), scale 0.2s var(--ease),
+        box-shadow 0.45s var(--ease), background-color 0.45s var(--ease);
+    }
+    .link:active { scale: 0.98; }
+
+    .link__icon {
+      display: grid; place-items: center;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: #ffffff; color: var(--plum);
+      box-shadow: inset 0 0 0 1px var(--line);
+    }
+    .link__icon svg { width: 20px; height: 20px; }
+    .link__text { min-width: 0; }
+    .link__label { display: block; font-size: 16px; font-weight: 500; letter-spacing: 0.01em; }
+    .link__meta {
+      display: block; margin-top: 1px;
+      font-size: 13px; color: var(--ink-soft);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .link__go { width: 20px; height: 20px; color: var(--ink-soft); transition: translate 0.45s var(--ease), color 0.45s var(--ease); }
+
+    .link--primary { background: var(--ink); color: #ffffff; border-color: var(--ink); }
+    .link--primary .link__icon { background: rgba(255, 255, 255, 0.12); color: #ffffff; box-shadow: none; }
+    .link--primary .link__meta, .link--primary .link__go { color: rgba(255, 255, 255, 0.66); }
+
+    @media (hover: hover) {
+      .share:hover { background: var(--ink); color: #ffffff; }
+      .link:hover { translate: 0 -2px; background: rgba(255, 255, 255, 0.86); box-shadow: 0 2px 4px rgba(110, 53, 80, 0.05), 0 18px 36px -14px rgba(110, 53, 80, 0.32); }
+      .link--primary:hover { background: #2a2427; }
+      .link:hover .link__go { translate: 3px -3px; color: var(--plum); }
+      .link--primary:hover .link__go { color: #ffffff; }
+      .link--down:hover .link__go { translate: 0 3px; }
+    }
+
+    .foot {
+      margin-top: auto; padding-top: 48px;
+      font-family: var(--serif); font-style: italic; font-size: 16px;
+      color: var(--ink-soft);
+    }
+
+    .toast {
+      position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); z-index: 10;
+      padding: 12px 20px; border-radius: 999px;
+      background: var(--ink); color: #ffffff;
+      font-size: 14px; font-weight: 500;
+      opacity: 0; translate: -50% 14px; pointer-events: none;
+      transition: opacity 0.4s var(--ease), translate 0.4s var(--ease);
+    }
+    .toast.is-on { opacity: 1; translate: -50% 0; }
+
+    /* Entrance */
+    .bloom { opacity: 0; translate: 0 14px; filter: blur(4px); animation: bloom 0.9s var(--ease) forwards; animation-delay: calc(var(--d, 0) * 1ms); }
+    @keyframes bloom { to { opacity: 1; translate: 0 0; filter: blur(0); } }
+
+    /* Larger screens: the column becomes a frosted card */
+    @media (min-width: 720px) {
+      body { justify-content: center; padding: 32px 24px; }
+      .card {
+        flex: 0 0 auto; max-width: 480px;
+        padding: 40px 40px 32px;
+        border-radius: 36px;
+        background: rgba(255, 255, 255, 0.34);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 30px 80px -40px rgba(110, 53, 80, 0.35);
+        -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+      }
+      .share { top: 20px; right: 20px; }
+      .sig-wrap { width: 270px; margin-top: 4px; }
+      .name { font-size: 50px; }
+      .links { margin-top: 30px; }
+      .foot { padding-top: 32px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+      .pen { stroke-dashoffset: 0 !important; }
+      .bloom { opacity: 1; translate: none; filter: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12" rx="0.5"/><circle cx="4" cy="4" r="2"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+      <symbol id="i-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.5" cy="8" r="3.75"/><path d="M2.75 20.25c.7-3.5 3.3-5.5 6.75-5.5s6.05 2 6.75 5.5M19 8.5v6M16 11.5h6"/></symbol>
+      <symbol id="i-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5v14M6.5 13 12 18.5 17.5 13"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 12.5v6A2.5 2.5 0 0 0 7.5 21h9a2.5 2.5 0 0 0 2.5-2.5v-6"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="wash" aria-hidden="true"><div class="wash__grain"></div></div>
+
+  <main class="card">
+    <button class="share bloom" id="share" type="button" aria-label="Share this page" style="--d: 900">
+      <svg aria-hidden="true"><use href="#i-share" /></svg>
+    </button>
+
+    <div class="sig-wrap" id="sig" title="Konstantina Bournoudi">
+      <svg class="sig" viewBox="42 198 2080 1340" role="img" aria-label="KB signature"><g fill="none" stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"><path class="pen" data-start="300" d="M372 850C365 851 346 855 333 856C319 858 306 859 293 859C279 859 266 858 253 856C240 854 226 852 214 848C201 844 188 839 177 833C165 827 153 820 143 811C134 802 124 792 118 780C112 769 108 755 107 742C105 729 107 715 109 703C112 690 117 677 123 665C129 653 136 642 144 631C152 620 160 610 169 600C177 590 186 580 196 570C205 561 215 552 225 543C235 534 245 525 255 517C266 509 276 500 287 492C297 484 308 476 319 468C330 460 340 453 351 445C362 438 373 430 385 423C396 416 407 409 419 402C430 395 442 388 453 382C465 375 476 368 488 362C500 355 511 349 523 343C535 337 547 331 559 325C571 320 583 314 596 310C609 306 622 301 635 300C648 298 662 297 674 301C686 305 698 313 707 322C716 331 723 344 728 356C733 368 737 381 740 394C743 407 746 420 748 433C750 446 751 460 752 473C753 486 753 500 754 513C754 526 754 540 755 553C755 566 755 580 755 593C755 606 755 620 755 633C755 646 754 660 754 673C753 686 752 700 752 713C752 726 753 740 753 753C753 766 753 780 751 793C749 806 743 818 740 831C736 844 732 857 729 870C727 883 726 896 725 909C723 923 723 936 721 949C719 962 717 975 715 989C713 1002 710 1015 707 1028C705 1041 702 1054 699 1067C697 1080 694 1093 691 1106C688 1119 684 1132 681 1145C677 1158 674 1171 670 1183C666 1196 662 1209 658 1221C653 1234 649 1247 645 1259C640 1272 635 1284 630 1297C625 1309 619 1321 613 1333C608 1345 601 1357 595 1368C588 1380 582 1391 574 1402C567 1413 559 1425 550 1434C541 1444 531 1454 520 1460C509 1467 494 1473 482 1472C470 1472 455 1465 447 1457C439 1448 435 1433 432 1420C429 1407 430 1393 431 1380C431 1367 433 1354 436 1340C438 1327 442 1315 446 1302C450 1289 454 1277 459 1264C464 1252 468 1239 474 1227C479 1215 484 1202 490 1190C496 1179 503 1167 509 1155C515 1143 521 1132 528 1120C534 1108 541 1097 548 1085C554 1074 561 1062 568 1051C576 1040 583 1029 590 1018C598 1006 605 996 613 985C621 974 629 963 637 953C646 942 654 931 663 922C672 913 683 903 693 896C703 890 717 884 722 882" style="stroke-dasharray:3102 6204;stroke-dashoffset:3104;animation-delay:300ms;animation-duration:674ms"/><path class="pen" data-start="1094" d="M1272 304C1267 308 1251 320 1240 328C1230 337 1220 346 1210 355C1200 363 1190 372 1180 381C1171 390 1161 399 1151 408C1141 417 1131 426 1121 435C1112 444 1102 453 1092 462C1082 471 1072 481 1062 490C1053 499 1043 508 1033 517C1023 526 1013 535 1004 544C994 553 984 562 974 571C965 580 955 589 945 599C936 608 927 617 917 627C908 636 898 646 889 655C880 665 871 675 862 685C853 694 844 704 835 714C826 724 817 734 808 744C799 754 780 768 782 774C784 780 807 781 819 782C832 783 846 779 859 777C872 776 886 774 899 776C912 777 926 781 936 789C946 796 955 807 961 819C968 830 971 844 974 856C977 869 978 883 979 896C980 909 980 923 980 936C980 949 980 963 980 976C981 989 981 1003 981 1016C981 1029 981 1043 981 1056C981 1069 981 1083 981 1096C981 1109 981 1123 982 1136C982 1149 982 1163 982 1176C982 1189 983 1203 983 1216C984 1229 986 1243 987 1256C989 1269 991 1282 994 1295C996 1308 999 1322 1004 1334C1009 1346 1014 1359 1022 1370C1030 1380 1040 1390 1052 1396C1063 1401 1078 1404 1091 1402C1103 1400 1116 1393 1126 1385C1136 1377 1146 1360 1151 1354C1156 1348 1153 1349 1154 1348" style="stroke-dasharray:1622 3244;stroke-dashoffset:1624;animation-delay:1094ms;animation-duration:353ms"/><path class="pen" data-start="1567" d="M1474 462C1475 469 1478 488 1480 502C1481 515 1481 528 1482 542C1483 555 1483 568 1483 581C1484 595 1484 608 1485 621C1485 635 1485 648 1485 661C1486 675 1485 688 1485 701C1485 715 1484 728 1484 741C1483 755 1483 768 1482 781C1482 795 1481 808 1480 821C1480 835 1479 848 1479 861C1478 875 1477 888 1477 901C1476 915 1476 928 1476 941C1475 955 1475 968 1474 981C1474 995 1473 1008 1472 1021C1472 1035 1471 1051 1471 1061C1470 1071 1470 1077 1470 1080" style="stroke-dasharray:626 1252;stroke-dashoffset:628;animation-delay:1567ms;animation-duration:300ms"/><path class="pen" data-start="1987" d="M1332 376C1336 371 1348 354 1357 345C1366 336 1377 328 1389 321C1400 313 1412 308 1424 302C1436 296 1449 291 1461 287C1474 282 1486 279 1499 275C1512 272 1525 269 1538 267C1552 265 1565 263 1578 262C1591 262 1605 261 1618 261C1631 262 1645 262 1658 265C1671 269 1684 273 1695 280C1706 287 1716 297 1722 308C1729 319 1732 333 1733 346C1734 359 1732 373 1730 385C1727 398 1722 411 1717 423C1712 436 1705 447 1699 459C1692 471 1685 482 1677 493C1670 504 1662 514 1653 525C1645 535 1637 546 1628 556C1619 566 1611 576 1602 586C1593 596 1584 606 1575 615C1566 625 1556 634 1547 644C1538 654 1521 665 1521 674C1520 683 1532 695 1542 700C1552 705 1568 702 1582 703C1595 703 1608 702 1622 701C1635 701 1648 701 1662 701C1675 701 1688 701 1702 703C1715 704 1728 706 1741 709C1754 712 1767 716 1779 721C1792 725 1804 731 1815 739C1826 746 1837 754 1846 763C1856 773 1864 783 1871 794C1879 805 1885 817 1890 829C1896 842 1900 854 1904 867C1908 880 1910 893 1912 906C1914 919 1915 933 1916 946C1916 959 1915 973 1914 986C1913 999 1911 1012 1909 1025C1906 1039 1903 1052 1900 1064C1896 1077 1892 1090 1887 1102C1882 1115 1876 1127 1870 1139C1864 1150 1858 1162 1850 1173C1843 1184 1835 1195 1827 1206C1819 1216 1810 1226 1800 1236C1791 1245 1781 1254 1772 1263C1762 1272 1752 1281 1741 1289C1731 1297 1720 1305 1709 1313C1698 1320 1686 1327 1675 1334C1663 1340 1651 1346 1639 1352C1627 1358 1615 1363 1602 1368C1590 1372 1577 1377 1564 1380C1552 1384 1539 1388 1526 1391C1513 1394 1500 1396 1486 1398C1473 1400 1460 1401 1447 1402C1433 1403 1420 1404 1407 1404C1393 1405 1380 1405 1367 1404C1353 1403 1340 1401 1327 1399C1314 1397 1301 1395 1288 1392C1275 1389 1262 1385 1249 1381C1237 1377 1224 1372 1212 1367C1199 1362 1187 1358 1175 1351C1163 1345 1152 1337 1142 1329C1132 1320 1123 1310 1115 1300C1107 1289 1100 1277 1096 1264C1093 1252 1092 1238 1094 1225C1096 1212 1102 1199 1108 1188C1115 1177 1125 1167 1135 1158C1144 1149 1155 1141 1167 1134C1178 1127 1189 1120 1201 1114C1213 1108 1225 1103 1238 1097C1250 1092 1262 1088 1275 1083C1288 1079 1300 1075 1313 1071C1326 1067 1339 1063 1351 1060C1364 1056 1377 1053 1390 1050C1403 1047 1416 1045 1429 1041C1442 1038 1455 1035 1468 1032C1481 1029 1494 1025 1507 1023C1520 1020 1533 1019 1547 1017C1560 1014 1573 1012 1586 1010C1599 1007 1612 1005 1625 1002C1638 1000 1652 998 1665 995C1678 993 1691 991 1704 989C1717 987 1731 985 1744 983C1757 981 1770 980 1783 978C1797 976 1810 973 1823 972C1836 970 1849 969 1863 967C1876 966 1889 965 1902 963C1916 961 1929 959 1942 956C1955 953 1968 950 1981 946C1993 943 2006 939 2019 934C2031 929 2048 921 2055 918C2062 914 2061 915 2062 914" style="stroke-dasharray:3679 7358;stroke-dashoffset:3681;animation-delay:1987ms;animation-duration:800ms"/></g></svg>
+    </div>
+
+    <h1 class="name bloom" style="--d: 450">
+      <span>Konstantina</span>
+      <span>Bournoudi</span>
+    </h1>
+
+    <div class="divider bloom" style="--d: 560" aria-hidden="true">
+      <svg viewBox="0 0 10 10"><path d="M5 0 10 5 5 10 0 5z" fill="currentColor" /></svg>
+    </div>
+
+    <p class="role bloom" style="--d: 620">Business Administration &amp; Organizations</p>
+    <p class="school bloom" style="--d: 680">National and Kapodistrian University of Athens</p>
+
+    <ul class="links">
+      <li class="bloom" style="--d: 760">
+        <a class="link link--primary" href="https://www.linkedin.com/in/kwnstantina-bournoudi-3b2b95398/" target="_blank" rel="noopener">
+          <span class="link__icon"><svg aria-hidden="true"><use href="#i-linkedin" /></svg></span>
+          <span class="link__text">
+            <span class="link__label">LinkedIn</span>
+            <span class="link__meta">Let's connect</span>
+          </span>
+          <svg class="link__go" aria-hidden="true"><use href="#i-go" /></svg>
+        </a>
+      </li>
+      <li class="bloom" style="--d: 830">
+        <a class="link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#107;&#119;&#110;&#115;&#116;&#97;&#110;&#116;&#105;&#110;&#97;&#98;&#111;&#117;&#114;&#110;&#111;&#117;&#100;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">
+          <span class="link__icon"><svg aria-hidden="true"><use href="#i-mail" /></svg></span>
+          <span class="link__text">
+            <span class="link__label">Email</span>
+            <span class="link__meta">&#107;&#119;&#110;&#115;&#116;&#97;&#110;&#116;&#105;&#110;&#97;&#98;&#111;&#117;&#114;&#110;&#111;&#117;&#100;&#105;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</span>
+          </span>
+          <svg class="link__go" aria-hidden="true"><use href="#i-go" /></svg>
+        </a>
+      </li>
+      <li class="bloom" style="--d: 900">
+        <a class="link link--down" href="konstantina-bournoudi.vcf" type="text/vcard">
+          <span class="link__icon"><svg aria-hidden="true"><use href="#i-contact" /></svg></span>
+          <span class="link__text">
+            <span class="link__label">Save contact</span>
+            <span class="link__meta">Add me to your phone</span>
+          </span>
+          <svg class="link__go" aria-hidden="true"><use href="#i-down" /></svg>
+        </a>
+      </li>
+    </ul>
+
+    <footer class="foot bloom" style="--d: 1000">© <span id="year">2026</span> Konstantina Bournoudi</footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      var year = document.getElementById('year');
+      if (year) year.textContent = new Date().getFullYear();
+
+      // Tap the signature to watch it being written again
+      var sig = document.getElementById('sig');
+      sig.addEventListener('click', function () {
+        var pens = sig.querySelectorAll('.pen');
+        for (var i = 0; i < pens.length; i++) pens[i].style.animationName = 'none';
+        void sig.offsetWidth;
+        for (var j = 0; j < pens.length; j++) {
+          pens[j].style.animationName = '';
+          pens[j].style.animationDelay = (parseInt(pens[j].dataset.start, 10) - 200) + 'ms';
+        }
+      });
+
+      var toast = document.getElementById('toast');
+      var timer;
+      function say(message) {
+        toast.textContent = message;
+        toast.classList.add('is-on');
+        clearTimeout(timer);
+        timer = setTimeout(function () { toast.classList.remove('is-on'); }, 2200);
+      }
+
+      document.getElementById('share').addEventListener('click', function () {
+        var url = location.protocol === 'file:' ? 'https://konstantinabournoudi.github.io/' : location.origin + location.pathname.replace(/index\.html$/, '');
+        if (navigator.share) {
+          navigator.share({ title: 'Konstantina Bournoudi', url: url }).catch(function () {});
+          return;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function () { say('Link copied'); }, function () { say(url); });
+        } else {
+          say(url);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
